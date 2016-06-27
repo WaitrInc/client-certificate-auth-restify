@@ -1,6 +1,6 @@
 {
   "name": "client-certificate-auth",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "middleware for Node.js implementing client SSL certificate authentication/authorization",
   "homepage": "https://github.com/tgies/client-certificate-auth",
   "bugs": {
