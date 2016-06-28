@@ -1,38 +1,38 @@
 {
-  "name": "client-certificate-auth",
-  "version": "0.4.0",
-  "description": "middleware for Node.js implementing client SSL certificate authentication/authorization",
-  "homepage": "https://github.com/tgies/client-certificate-auth",
-  "bugs": {
-    "url": "https://github.com/tgies/client-certificate-auth/issues"
-  },
-  "main": "index.js",
-  "engines": {
-    "node": ">= 0.6.x"
-  },
-  "devDependencies": {
-    "mocha": "1.9.x",
-    "should": "1.2.x"
-  },
-  "directories": {
-    "lib": "./lib",
-    "test": "./test"
-  },
-  "scripts": {
-    "test": "mocha test/test-*"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tgies/client-certificate-auth.git"
-  },
-  "keywords": [
-    "authentication",
-    "ssl",
-    "express",
-    "connect",
-    "middleware"
-  ],
-  "author": "Tony Gies <tony.gies@gruppe86.net> (https://github.com/tgies)",
-  "license": "MIT",
-  "readmeFilename": "README.md"
+    "name": "client-certificate-auth-restify",
+    "version": "0.4.0",
+    "description": "middleware for Node.js implementing client SSL certificate authentication/authorization",
+    "homepage": "https://github.com/WaitrInc/client-certificate-auth-restify",
+    "bugs": {
+        "url": "https://github.com/WaitrInc/client-certificate-auth-restify/issues"
+    },
+    "main": "index.js",
+    "engines": {
+        "node": ">= 0.6.x"
+    },
+    "devDependencies": {
+        "mocha": "1.9.x",
+        "should": "1.2.x"
+    },
+    "directories": {
+        "lib": "./lib",
+        "test": "./test"
+    },
+    "scripts": {
+        "test": "mocha test/test-*"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/WaitrInc/client-certificate-auth-restify"
+    },
+    "keywords": [
+        "authentication",
+        "ssl",
+        "express",
+        "connect",
+        "middleware"
+    ],
+    "author": "Tony Gies <tony.gies@gruppe86.net> (https://github.com/tgies)",
+    "license": "MIT",
+    "readmeFilename": "README.md"
 }
