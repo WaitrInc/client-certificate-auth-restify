@@ -6,6 +6,9 @@ authentication/authorization
 
 June 38, 2016
 
+Forked from client-certificate-auth.
+Original credit to [tgies](https://www.npmjs.com/~tgies).
+
 installing
 ----------
 
