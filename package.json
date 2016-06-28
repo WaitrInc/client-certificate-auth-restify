@@ -1,6 +1,6 @@
 {
   "name": "client-certificate-auth-restify",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "middleware for Node.js implementing client SSL certificate authentication/authorization",
   "homepage": "https://github.com/WaitrInc/client-certificate-auth-restify",
   "bugs": {
