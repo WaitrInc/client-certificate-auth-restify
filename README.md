@@ -1,26 +1,22 @@
-client-certificate-auth
+client-certificate-auth-restify
 ========
 
 middleware for Node.js implementing client SSL certificate
 authentication/authorization
 
-Copyright © 2013 Tony Gies
-
-April 30, 2013
-
-[![Build Status](https://travis-ci.org/tgies/client-certificate-auth.png)](https://travis-ci.org/tgies/client-certificate-auth)
+June 38, 2016
 
 installing
 ----------
 
-client-certificate-auth is available from [npm](https://npmjs.org/package/client-certificate-auth.).
+client-certificate-auth-restify is available from [npm](https://npmjs.org/package/client-certificate-auth-restify.).
 
-    $ npm install client-certificate-auth
+    $ npm install client-certificate-auth-restify
 
 requirements
 ------------
 
-client-certificate-auth is tested against Node.js versions 0.6, 0.8, and 0.10.
+client-certificate-auth-restify is tested against Node.js versions 0.6, 0.8, and 0.10.
 It has no external dependencies (other than any middleware framework with which
 you may wish to use it); however, to run the tests, you will need [mocha](https://npmjs.org/package/mocha) and
 [should](https://npmjs.org/package/should).
@@ -28,8 +24,8 @@ you may wish to use it); however, to run the tests, you will need [mocha](https:
 synopsis
 --------
 
-client-certificate-auth provides HTTP middleware for Node.js (in particular
-Connect/Express) to require that a valid, verifiable client SSL certificate is
+client-certificate-auth-restify provides HTTP middleware for Node.js (in particular
+restify) to require that a valid, verifiable client SSL certificate is
 provided, and passes information about that certificate to a callback which must
 return `true` for the request to proceed; otherwise, the client is considered 
 unauthorized and the request is aborted.
@@ -38,14 +34,13 @@ usage
 -----
 
 The https server must be set up to request a client certificate and validate it 
-against an issuer/CA certificate. What follows is a typical example using
-[Express](http://expressjs.com):
+against an issuer/CA certificate. What follows is a typical example using Restify:
 
 ```javascript
-var express = require('express');
+var restify = require('restify');
 var fs = require('fs');
 var https = require('https');
-var clientCertificateAuth = require('client-certificate-auth');
+var clientCertificateAuth = require('client-certificate-auth-restify');
 
 var opts = {
   // Server SSL private key and certificate
@@ -62,13 +57,11 @@ var opts = {
   rejectUnauthorized: false
 };
 
-var app = express();
+var app = restify.createServer(opts);
 
 // add clientCertificateAuth to the middleware stack, passing it a callback
 // which will do further examination of the provided certificate.
 app.use(clientCertificateAuth(checkAuth));
-app.use(app.router);
-app.use(function(err, req, res, next) { console.log(err); next(); });
 
 app.get('/', function(req, res) {
   res.send('Authorized!');
@@ -85,30 +78,10 @@ var checkAuth = function(cert) {
   * as a username to log the user in to your underlying authentication/session
   * management layer.
   */
-  return cert.subject.CN === 'Doug Prishpreed';
+  return cert.subject.CN === 'CN Subject Placeholder';
 };
 
-https.createServer(opts, app).listen(4000);
-```
-
-Or secure only certain routes:
-
-```javascript
-app.get('/unsecure', function(req, res) {
-  res.send('Hello world');
+server.listen(8080, function () {
+  console.log('%s listening at %s', server.name, server.url);
 });
-
-app.get('/secure', clientCertificateAuth(checkAuth), function(req, res) {
-  res.send('Hello authorized user');
-});
-```
-
-`checkAuth` can also be asynchronous:
-
-```javascript
-function checkAuth(cert, callback) {
-  callback(true);
-}
-
-app.use(checkAuth);
 ```
